@@ -19,7 +19,6 @@ let awnsers = {
 function updateQuestion() {
   if (counter <= 11) {
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
-    countervraag++;
     questionDOM.innerHTML = subjects[counter].statement;
   } else {
     titleDOM.innerHTML = "End";
@@ -43,6 +42,7 @@ btnEens.addEventListener("click", () => {
     awnsers.eens++;
     lastAwnser = "eens";
     counter++;
+    countervraag++;
     updateQuestion();
   }
 });
@@ -51,6 +51,7 @@ btnGeenVanBeide.addEventListener("click", () => {
     awnsers.geenVanBijde++;
     lastAwnser = "geen";
     counter++;
+    countervraag++;
     updateQuestion();
   }
 });
@@ -59,17 +60,22 @@ btnOnEens.addEventListener("click", () => {
     awnsers.oneens++;
     lastAwnser = "oneens";
     counter++;
+    countervraag++;
     updateQuestion();
   }
 });
 btnSkip.addEventListener("click", () => {
   if (counter < 12) {
     counter++;
+    countervraag++;
     lastAwnser = "";
     updateQuestion();
   }
 });
 btnBack.addEventListener("click", () => {
+  console.log(countervraag);
+  countervraag--;
+  console.log(countervraag);
   if (lastAwnser == "eens") {
     awnsers.eens--;
     counter--;

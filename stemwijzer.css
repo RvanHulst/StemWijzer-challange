@@ -40,6 +40,7 @@ body {
     "menus menus menus rights rights rights"
     "footer footer footer footer footer footer";
   background-color: white;
+  margin-top: 30px;
 }
 
 .grid-container > div {
@@ -49,7 +50,7 @@ body {
 }
 .block {
   background-color: white;
-  height: 1200px;
+  height: 600px;
   width: 80%;
   margin-left: 10%;
 }
@@ -93,8 +94,7 @@ body {
 .btn1,
 .btn2,
 .btn3,
-.btnResult,
-.btnBack {
+.btnResult {
   background-color: #000000;
   border: none;
   color: white;
@@ -117,4 +117,21 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.title {
+  color: #01b4dc;
+}
+.btnBack {
+  height: 50px;
+  width: 50px;
+  background-color: #e7eaeb;
+  border-radius: 50px;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+#arrow {
+  position: absolute;
+  top: 25%;
+  left: 25%;
 }
