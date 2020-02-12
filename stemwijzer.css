@@ -95,7 +95,7 @@ body {
 .btn3,
 .btnResult,
 .btnBack {
-  background-color: #4caf50;
+  background-color: #000000;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -107,7 +107,7 @@ body {
   cursor: pointer;
 }
 .button {
-  background-color: #4caf50;
+  background-color: #000000;
   border: none;
   color: white;
   padding: 15px 32px;
