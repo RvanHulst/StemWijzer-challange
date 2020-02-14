@@ -90,7 +90,6 @@ body {
   margin-left: 60px;
 }
 
-.btnSkip,
 .btn1,
 .btn2,
 .btn3,
@@ -105,6 +104,7 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 5px;
 }
 .button {
   background-color: #000000;
@@ -120,6 +120,9 @@ body {
 }
 .title {
   color: #01b4dc;
+  font-family: "Arial";
+  font-weight: bold;
+  margin-left: 100px;
 }
 .btnBack {
   height: 50px;
@@ -134,4 +137,27 @@ body {
   position: absolute;
   top: 25%;
   left: 25%;
+}
+.btnSkip {
+  width: 100%;
+  background: white;
+  font-weight: normal;
+  color: #a8a8a8;
+  margin-left: 100px;
+}
+.question {
+  font-family: "Arial";
+  margin-bottom: 1em;
+  width: 60%;
+  overflow: hidden;
+  margin-left: 100px;
+}
+.btn1 {
+  margin-left: 100px;
+}
+
+.btn1:hover,
+.btn2:hover,
+.btn3:hover {
+  background-color: rgb(1, 180, 220);
 }
