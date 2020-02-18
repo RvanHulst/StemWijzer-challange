@@ -9,15 +9,11 @@ let btnSkip = document.querySelector(".btnSkip");
 let btnBack = document.querySelector(".btnBack");
 let countervraag = 1;
 let counter = 0;
-let lastAwnser = "";
-let awnsers = {
-  eens: 0,
-  oneens: 0,
-  geenVanBijde: 0
-};
+let answers = [];
 
-function updateQuestion() {
+function updateQuestion(answer) {
   if (counter <= 11) {
+    answers.push(answer);
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
   } else {
@@ -31,66 +27,48 @@ function updateQuestion() {
     btnBack.style.display = "none";
   }
 
-  console.log(awnsers);
+  console.log(answers);
 }
 
 (() => {
-  updateQuestion();
+  updateQuestion("start");
 })();
 
 btnEens.addEventListener("click", () => {
   if (counter < 12) {
-    awnsers.eens++;
-    lastAwnser = "eens";
     counter++;
     countervraag++;
-    updateQuestion();
+    updateQuestion("pro");
   }
 });
 btnGeenVanBeide.addEventListener("click", () => {
   if (counter < 12) {
-    awnsers.geenVanBijde++;
-    lastAwnser = "geen";
     counter++;
     countervraag++;
-    updateQuestion();
+    updateQuestion("none");
   }
 });
 btnOnEens.addEventListener("click", () => {
   if (counter < 12) {
-    awnsers.oneens++;
-    lastAwnser = "oneens";
     counter++;
     countervraag++;
-    updateQuestion();
+    updateQuestion("contra");
   }
 });
 btnSkip.addEventListener("click", () => {
   if (counter < 12) {
     counter++;
     countervraag++;
-    lastAwnser = "";
-    updateQuestion();
+    updateQuestion("skip");
   }
 });
 btnBack.addEventListener("click", () => {
-  console.log(countervraag);
-  countervraag--;
-  console.log(countervraag);
-  if (lastAwnser == "eens") {
-    awnsers.eens--;
+  if (counter > 0) {
+    answers.pop();
     counter--;
-    updateQuestion();
-  } else if (lastAwnser == "geen") {
-    awnsers.geenVanBijde--;
-    counter--;
-    updateQuestion();
-  } else if (lastAwnser == "oneens") {
-    awnsers.oneens--;
-    counter--;
-    updateQuestion();
-  } else {
-    counter--;
-    updateQuestion();
+    countervraag--;
+    titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+    questionDOM.innerHTML = subjects[counter].statement;
+    console.log(answers);
   }
 });
