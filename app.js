@@ -28,6 +28,7 @@ function updateQuestion() {
     btnGeenVanBeide.style.display = "none";
     btnOnEens.style.display = "none";
     btnSkip.style.display = "none";
+    btnBack.style.display = "none";
   }
 
   console.log(awnsers);
