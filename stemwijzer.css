@@ -12,6 +12,7 @@ body {
   font-family: "Arial";
   font-size: 22px;
   box-shadow: 0;
+  background-attachment: fixed;
 }
 .item1 {
   grid-area: header;
