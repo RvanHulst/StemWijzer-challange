@@ -21,16 +21,19 @@
             <a class="btn2">Geen van bijde</a>
             <a class="btn3">Oneens</a>
             <a class="btnSkip">Sla deze vraag over <i class="fas fa-arrow-right"></i></a>
-        </div>
-          <a class="btnResult" style="display:none;">
-            Result
-          </a>
+          </div>
+          <div id="result_container" style="display:none;"></div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="data.js"></script>
-    <script type="text/javascript" src="app.js">
-      start();
+    <script type="text/javascript" src="app.js"></script>
+    <script>
+      (() => {
+        updateQuestion("start");
+      })();
+
+      initButtons();
     </script>
   </body>
 </html>
