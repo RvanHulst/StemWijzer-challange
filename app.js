@@ -14,8 +14,8 @@ let counter = 0;
 let answers = [];
 
 function updateQuestion(answer) {
+  answers.push(answer);
   if (counter < 30) {
-    answers.push(answer);
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
   } else {
@@ -33,7 +33,7 @@ function displayResult() {
   btnContainer.style.display = "none";
   resultContent();
 }
-
+//calcutates the answer
 function calcAnswer() {
   for (let i = 0; i < answers.length; i++) {
     for (let p = 0; p < parties.length - 1; p++) {
@@ -61,7 +61,7 @@ function resultContent() {
     result_container.appendChild(p);
   }
 }
-
+//BUTTONS! all function, skipp , back ,and more
 function initButtons() {
   btnEens.addEventListener("click", () => {
     if (counter < 30) {
