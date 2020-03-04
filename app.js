@@ -14,8 +14,8 @@ let counter = 0;
 let answers = [];
 
 function updateQuestion(answer) {
-  answers.push(answer);
   if (counter < 30) {
+    answers.push(answer);
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
   } else {
@@ -52,13 +52,13 @@ function calcAnswer() {
 function resultContent() {
   calcAnswer();
   for (let i = 0; i < parties.length; i++) {
-    var p = document.createElement("p");
+    var p1 = document.createElement("p");
     if (parties[i].score) {
-      p.innerHTML = parties[i].name + " " + parties[i].score;
+      p1.innerHTML = parties[i].name + " " + parties[i].score;
     } else {
-      p.innerHTML = parties[i].name + " 0";
+      p1.innerHTML = parties[i].name + " 0";
     }
-    result_container.appendChild(p);
+    result_container.appendChild(p1);
   }
 }
 //BUTTONS! all function, skipp , back ,and more

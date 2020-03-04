@@ -138,15 +138,13 @@ body {
   width: 50px;
   background-color: #e7eaeb;
   border-radius: 50px;
+  cursor: pointer;
   position: relative;
   margin-left: 20px;
   margin-top: 10px;
 }
-#arrow {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  cursor: pointer;
+.fas {
+  width: 100px;
 }
 .btnSkip {
   width: 100%;
