@@ -8,6 +8,7 @@ let titleDOM = document.querySelector(".title");
 let questionDOM = document.querySelector(".question");
 
 let result_container = document.getElementById("result_container");
+let null_container = document.getElementById("null_container");
 let btnContainer = document.querySelector(".w3-display-bottommiddle");
 
 let answers = [];
@@ -22,25 +23,25 @@ let counter = 0;
 //BUTTONS! all function, skipp , back ,and more
 (function() {
   btnEens.addEventListener("click", () => {
-    if (counter < 30) {
+    if (counter <= 30) {
       countervraag++;
       updateQuestion("pro");
     }
   });
   btnGeenVanBeide.addEventListener("click", () => {
-    if (counter < 30) {
+    if (counter <= 30) {
       countervraag++;
       updateQuestion("none");
     }
   });
   btnOnEens.addEventListener("click", () => {
-    if (counter < 30) {
+    if (counter <= 30) {
       countervraag++;
       updateQuestion("contra");
     }
   });
   btnSkip.addEventListener("click", () => {
-    if (counter < 30) {
+    if (counter <= 30) {
       countervraag++;
       updateQuestion("skip");
     }
@@ -59,15 +60,16 @@ let counter = 0;
 
 function updateQuestion(answer) {
   console.log(counter);
+  answers.push(answer);
+  titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+  questionDOM.innerHTML = subjects[counter].statement;
+  counter++;
+
   if (counter == subjects.length) {
     alert();
     displayResult();
     calcAnswer();
-  } else {
-    answers.push(answer);
-    titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
-    questionDOM.innerHTML = subjects[counter].statement;
-    counter++;
+    sortAnswer();
   }
 }
 
@@ -82,14 +84,21 @@ function displayResult() {
 
 function resultContent() {
   calcAnswer();
+  parties.sort((a, b) => a.score - b.score);
+
   for (let i = 0; i < parties.length; i++) {
     var p1 = document.createElement("p");
     if (parties[i].score) {
-      p1.innerHTML = parties[i].name + " " + parties[i].score;
+      p1.innerHTML =
+        parties[i].name +
+        " " +
+        Math.floor((100 / subjects.length) * parties[i].score) +
+        "%";
+      result_container.prepend(p1);
     } else {
-      p1.innerHTML = parties[i].name + " 0";
+      p1.innerHTML = parties[i].name + " 0%";
+      null_container.appendChild(p1);
     }
-    result_container.appendChild(p1);
   }
 }
 
