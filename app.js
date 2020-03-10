@@ -4,14 +4,22 @@ let questionDOM = document.querySelector(".question");
 let result_container = document.getElementById("result_container");
 let btnContainer = document.querySelector(".w3-display-bottommiddle");
 
+let start = document.getElementById("start");
 let btnEens = document.querySelector(".btn1");
 let btnGeenVanBeide = document.querySelector(".btn2");
 let btnOnEens = document.querySelector(".btn3");
-let btnSkip = document.querySelector(".btnSkip");
-let btnBack = document.querySelector(".btnBack");
+
 let countervraag = 1;
 let counter = 0;
 let answers = [];
+
+start.onclick = function() {
+  startQuestions();
+};
+
+function startQuestions() {
+  initButtons();
+}
 
 function updateQuestion(answer) {
   if (counter < 30) {
