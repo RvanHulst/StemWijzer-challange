@@ -10,10 +10,12 @@ let questionDOM = document.querySelector(".question");
 let result_container = document.getElementById("result_container");
 let null_container = document.getElementById("null_container");
 let btnContainer = document.querySelector(".w3-display-bottommiddle");
+const CHKBOX = document.getElementById("chkBox");
 
 let answers = [];
 let countervraag = 1;
 let counter = 0;
+let opinionCounter = [];
 
 (function() {
   titleDOM.innerHTML = countervraag + ". " + subjects[0].title;
@@ -59,16 +61,25 @@ let counter = 0;
 })();
 
 function updateQuestion(answer) {
-  console.log(counter);
-  answers.push(answer);
-  titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
-  questionDOM.innerHTML = subjects[counter].statement;
-  counter++;
+  if (CHKBOX.checked) {
+    console.log(counter);
+    answers.push({ opinion: answer, checked: true });
+    titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+    questionDOM.innerHTML = subjects[counter].statement;
+    counter++;
+    calcAnswer();
+  } else {
+    console.log(counter);
+    answers.push({ opinion: answer, checked: false });
+    titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+    questionDOM.innerHTML = subjects[counter].statement;
+    counter++;
+    calcAnswer();
+  }
 
   if (counter == subjects.length) {
-    alert();
     displayResult();
-    calcAnswer();
+    //calcAnswer();
     sortAnswer();
   }
 }
@@ -79,24 +90,27 @@ function displayResult() {
   questionDOM.style.display = "none";
   btnBack.style.display = "none";
   btnContainer.style.display = "none";
+  chkBox.style.display = "none";
+  chkTEXT.style.display = "none";
+
   resultContent();
 }
 
 function resultContent() {
   calcAnswer();
-  parties.sort((a, b) => a.score - b.score);
+  opinionCounter.sort((a, b) => a.score - b.score);
 
   for (let i = 0; i < parties.length; i++) {
     var p1 = document.createElement("p");
-    if (parties[i].score) {
+    if (opinionCounter[parties[i]].score) {
       p1.innerHTML =
-        parties[i].name +
+        opinionCounter[i].name +
         " " +
-        Math.floor((100 / subjects.length) * parties[i].score) +
+        Math.floor((100 / subjects.length) * opinionCounter[i].score) +
         "%";
       result_container.prepend(p1);
     } else {
-      p1.innerHTML = parties[i].name + " 0%";
+      p1.innerHTML = opinionCounter[i].name + " 0%";
       null_container.appendChild(p1);
     }
   }
@@ -104,14 +118,31 @@ function resultContent() {
 
 //calcutates the answer
 function calcAnswer() {
-  for (let i = 0; i < answers.length; i++) {
-    for (let p = 0; p < parties.length - 1; p++) {
-      console.log(i + " " + p);
-      if (subjects[i].parties[p].position == answers[i]) {
-        if (!parties[p].score) {
-          parties[p].score = +1;
+  //let opinionCounter = [];
+  for (let index = 0; index < parties.length; index++) {
+    opinionCounter.push({ name: parties[index]["name"], score: 0 });
+  }
+
+  for (
+    let statementIndex = 0;
+    statementIndex < answers.length;
+    statementIndex++
+  ) {
+    for (let partyIndex = 0; partyIndex < parties.length - 1; partyIndex++) {
+      console.log(statementIndex + " " + partyIndex);
+      if (
+        subjects[statementIndex].parties[partyIndex].position ===
+        answers[statementIndex].opinion
+      ) {
+        let party = opinionCounter.find(
+          element =>
+            element.name ===
+            subjects[statementIndex]["parties"][partyIndex]["name"]
+        );
+        if (answers[statementIndex]["checked"] === true) {
+          party.score += 2;
         } else {
-          parties[p].score = parties[p].score + 1;
+          party.score += 1;
         }
       }
     }
