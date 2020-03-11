@@ -102,7 +102,8 @@ body {
 .btn1,
 .btn2,
 .btn3,
-.btnResult {
+.btnResult,
+.btn {
   background-color: #000000;
   border: none;
   color: white;
@@ -169,6 +170,10 @@ body {
 
 .btn1:hover,
 .btn2:hover,
-.btn3:hover {
+.btn3:hover,
+.btn:hover {
   background-color: rgb(1, 180, 220);
+}
+#partyKeuzen {
+  display: none;
 }
