@@ -79,7 +79,7 @@ function updateQuestion(answer) {
 
   if (counter == subjects.length) {
     displayResult();
-    //calcAnswer();
+    calcAnswer();
     sortAnswer();
   }
 }
@@ -102,7 +102,9 @@ function resultContent() {
 
   for (let i = 0; i < parties.length; i++) {
     var p1 = document.createElement("p");
+    console.log(i);
     if (opinionCounter[parties[i]].score) {
+      console.log("1");
       p1.innerHTML =
         opinionCounter[i].name +
         " " +
@@ -110,6 +112,7 @@ function resultContent() {
         "%";
       result_container.prepend(p1);
     } else {
+      console.log("2");
       p1.innerHTML = opinionCounter[i].name + " 0%";
       null_container.appendChild(p1);
     }
@@ -118,7 +121,7 @@ function resultContent() {
 
 //calcutates the answer
 function calcAnswer() {
-  //let opinionCounter = [];
+  let opinionCounter = [];
   for (let index = 0; index < parties.length; index++) {
     opinionCounter.push({ name: parties[index]["name"], score: 0 });
   }
