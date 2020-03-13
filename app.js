@@ -22,8 +22,9 @@ let countervraag = 1;
 let counter = 0;
 
 (function() {
-  titleDOM.innerHTML = countervraag + ". " + subjects[0].title;
-  questionDOM.innerHTML = subjects[0].statement;
+  titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+  questionDOM.innerHTML = subjects[counter].statement;
+  counter++;
 })();
 
 //BUTTONS! all function, skipp , back ,and more
@@ -85,7 +86,7 @@ function updateQuestion(answer) {
   questionDOM.innerHTML = subjects[counter].statement;
   counter++;
 
-  if (counter == subjects.length) {
+  if (counter >= subjects.length) {
     displayResult();
   }
 }
