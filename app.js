@@ -20,7 +20,7 @@ const CHKBOX = document.getElementById("chkBox");
 let answers = [];
 let countervraag = 1;
 let counter = 0;
-
+// houdt de counter correct
 (function() {
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
@@ -64,7 +64,7 @@ let counter = 0;
     }
   });
 })();
-//Filter buttons
+//Filter buttons voor welke partie je wilt , groot,all,seculier
 allesBtn.addEventListener("click", () => {
   resultContent("all");
 });
@@ -75,7 +75,7 @@ sclrBtn.addEventListener("click", () => {
 grootBtn.addEventListener("click", () => {
   resultContent("groot");
 });
-
+//updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
   if (CHKBOX.checked) answers.push({ opinion: answer, checked: true });
   else answers.push({ opinion: answer, checked: false });
@@ -90,7 +90,7 @@ function updateQuestion(answer) {
     displayResult();
   }
 }
-
+//Bij result answer haalt hij hier dingen weg of laat ze just zien
 function displayResult() {
   titleDOM.innerHTML = "Resultaten";
   questionDOM.style.display = "none";
@@ -100,7 +100,7 @@ function displayResult() {
   chkTEXT.style.display = "none";
   partyKeuzen.style.display = "block";
 }
-
+//Hier kan je kiezen tussen de parties , zoals > groot ,seculier of alle
 function resultContent(keuzen) {
   partyKeuzen.innerHTML = "";
   calcAnswer();
@@ -142,7 +142,7 @@ function resultContent(keuzen) {
   }
 }
 
-//calcutates the answer\
+//calcutates the answer of all the answers and gives u the best, hier staan ook deze telt sterker mee punten worden hier ook berekent
 function calcAnswer() {
   for (let i = 0; i < answers.length; i++) {
     for (let p = 0; p < parties.length - 1; p++) {
