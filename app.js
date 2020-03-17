@@ -20,35 +20,30 @@ const CHKBOX = document.getElementById("chkBox");
 let answers = [];
 let countervraag = 1;
 let counter = 0;
-
+// houdt de counter correct
 (function() {
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
-  counter++;
 })();
 
 //BUTTONS! all function, skipp , back ,and more
 btnEens.addEventListener("click", () => {
   if (counter <= 30) {
-    countervraag++;
     updateQuestion("pro");
   }
 });
 btnGeenVanBeide.addEventListener("click", () => {
   if (counter <= 30) {
-    countervraag++;
     updateQuestion("none");
   }
 });
 btnOnEens.addEventListener("click", () => {
   if (counter <= 30) {
-    countervraag++;
     updateQuestion("contra");
   }
 });
 btnSkip.addEventListener("click", () => {
   if (counter <= 30) {
-    countervraag++;
     updateQuestion("skip");
   }
 });
@@ -67,7 +62,6 @@ btnBack.addEventListener("click", () => {
 allesBtn.addEventListener("click", () => {
   resultContent("all");
 });
-
 sclrBtn.addEventListener("click", () => {
   resultContent("sec");
 });
@@ -76,18 +70,19 @@ grootBtn.addEventListener("click", () => {
 });
 //updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
+  if (counter == subjects.length - 1) {
+    displayResult();
+    return;
+  }
   if (CHKBOX.checked) answers.push({ opinion: answer, checked: true });
   else answers.push({ opinion: answer, checked: false });
 
   console.log(answers);
 
+  counter++;
+  countervraag++;
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
-  counter++;
-
-  if (counter >= subjects.length) {
-    displayResult();
-  }
 }
 //Bij result answer haalt hij hier dingen weg of laat ze just zien
 function displayResult() {
