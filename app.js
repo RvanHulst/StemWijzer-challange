@@ -20,7 +20,7 @@ const CHKBOX = document.getElementById("chkBox");
 let answers = [];
 let countervraag = 1;
 let counter = 0;
-// houdt de counter correct
+
 (function() {
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
@@ -28,42 +28,41 @@ let counter = 0;
 })();
 
 //BUTTONS! all function, skipp , back ,and more
-(function() {
-  btnEens.addEventListener("click", () => {
-    if (counter <= 30) {
-      countervraag++;
-      updateQuestion("pro");
-    }
-  });
-  btnGeenVanBeide.addEventListener("click", () => {
-    if (counter <= 30) {
-      countervraag++;
-      updateQuestion("none");
-    }
-  });
-  btnOnEens.addEventListener("click", () => {
-    if (counter <= 30) {
-      countervraag++;
-      updateQuestion("contra");
-    }
-  });
-  btnSkip.addEventListener("click", () => {
-    if (counter <= 30) {
-      countervraag++;
-      updateQuestion("skip");
-    }
-  });
-  btnBack.addEventListener("click", () => {
-    if (counter > 0) {
-      answers.pop();
-      counter--;
-      countervraag--;
-      titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
-      questionDOM.innerHTML = subjects[counter].statement;
-      console.log(answers);
-    }
-  });
-})();
+btnEens.addEventListener("click", () => {
+  if (counter <= 30) {
+    countervraag++;
+    updateQuestion("pro");
+  }
+});
+btnGeenVanBeide.addEventListener("click", () => {
+  if (counter <= 30) {
+    countervraag++;
+    updateQuestion("none");
+  }
+});
+btnOnEens.addEventListener("click", () => {
+  if (counter <= 30) {
+    countervraag++;
+    updateQuestion("contra");
+  }
+});
+btnSkip.addEventListener("click", () => {
+  if (counter <= 30) {
+    countervraag++;
+    updateQuestion("skip");
+  }
+});
+btnBack.addEventListener("click", () => {
+  if (counter > 0) {
+    answers.pop();
+    counter--;
+    countervraag--;
+    titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
+    questionDOM.innerHTML = subjects[counter].statement;
+    console.log(answers);
+  }
+});
+
 //Filter buttons voor welke partie je wilt , groot,all,seculier
 allesBtn.addEventListener("click", () => {
   resultContent("all");
