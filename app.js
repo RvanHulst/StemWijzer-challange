@@ -1,22 +1,23 @@
 //buttons
-let btnEens = document.querySelector(".btn1");
-let btnGeenVanBeide = document.querySelector(".btn2");
-let btnOnEens = document.querySelector(".btn3");
-let btnSkip = document.querySelector(".btnSkip");
-let btnBack = document.querySelector(".btnBack");
+const btnEens = document.querySelector(".btn1");
+const btnGeenVanBeide = document.querySelector(".btn2");
+const btnOnEens = document.querySelector(".btn3");
+const btnSkip = document.querySelector(".btnSkip");
+const btnBack = document.querySelector(".btnBack");
 //pages
-let titleDOM = document.querySelector(".title");
-let questionDOM = document.querySelector(".question");
+const titleDOM = document.querySelector(".title");
+const questionDOM = document.querySelector(".question");
 
-let result_container = document.getElementById("result_container");
-let null_container = document.getElementById("null_container");
-let btnContainer = document.querySelector(".w3-display-bottommiddle");
+const resultContainer = document.getElementById("result_container");
+const nullContainer = document.getElementById("null_container");
+const btnContainer = document.querySelector(".w3-display-bottommiddle");
 //buttons for party choosing
-let allesBtn = document.getElementById("allesBtn");
-let sclrBtn = document.getElementById("sclrBtn");
-let grootBtn = document.getElementById("grootBtn");
-let partyKeuzen = document.getElementById("partyKeuzen");
-const CHKBOX = document.getElementById("chkBox");
+const allesBtn = document.getElementById("allesBtn");
+const sclrBtn = document.getElementById("sclrBtn");
+const grootBtn = document.getElementById("grootBtn");
+const partyKeuzen = document.getElementById("partyKeuzen");
+const chkBox = document.getElementById("chkBox");
+const chkText = document.getElementById("chkText");
 
 //Numbers
 let answers = [];
@@ -32,21 +33,25 @@ let counter = 0;
 btnEens.addEventListener("click", () => {
   if (counter <= 30) {
     updateQuestion("pro");
+    chkBox.checked = false;
   }
 });
 btnGeenVanBeide.addEventListener("click", () => {
   if (counter <= 30) {
     updateQuestion("none");
+    chkBox.checked = false;
   }
 });
 btnOnEens.addEventListener("click", () => {
   if (counter <= 30) {
     updateQuestion("contra");
+    chkBox.checked = false;
   }
 });
 btnSkip.addEventListener("click", () => {
   if (counter <= 30) {
     updateQuestion("skip");
+    chkBox.checked = false;
   }
 });
 btnBack.addEventListener("click", () => {
@@ -57,6 +62,7 @@ btnBack.addEventListener("click", () => {
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
     console.log(answers);
+    chkBox.checked = false;
   }
 });
 
@@ -72,12 +78,13 @@ grootBtn.addEventListener("click", () => {
 });
 //updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
+  if (chkBox.checked) answers.push({ opinion: answer, checked: true });
+  else answers.push({ opinion: answer, checked: false });
+
   if (counter == subjects.length - 1) {
     displayResult();
     return;
   }
-  if (CHKBOX.checked) answers.push({ opinion: answer, checked: true });
-  else answers.push({ opinion: answer, checked: false });
 
   console.log(answers);
 
@@ -93,7 +100,7 @@ function displayResult() {
   btnBack.style.display = "none";
   btnContainer.style.display = "none";
   chkBox.style.display = "none";
-  chkTEXT.style.display = "none";
+  chkText.style.display = "none";
   partyKeuzen.style.display = "block";
 }
 //Hier kan je kiezen tussen de parties , zoals > groot ,seculier of alle
