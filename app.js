@@ -1,32 +1,34 @@
+//buttons
 let btnEens = document.querySelector(".btn1");
 let btnGeenVanBeide = document.querySelector(".btn2");
 let btnOnEens = document.querySelector(".btn3");
 let btnSkip = document.querySelector(".btnSkip");
 let btnBack = document.querySelector(".btnBack");
-
+//pages
 let titleDOM = document.querySelector(".title");
 let questionDOM = document.querySelector(".question");
 
 let result_container = document.getElementById("result_container");
 let null_container = document.getElementById("null_container");
 let btnContainer = document.querySelector(".w3-display-bottommiddle");
-
+//buttons for party choosing
 let allesBtn = document.getElementById("allesBtn");
 let sclrBtn = document.getElementById("sclrBtn");
 let grootBtn = document.getElementById("grootBtn");
 let partyKeuzen = document.getElementById("partyKeuzen");
 const CHKBOX = document.getElementById("chkBox");
 
+//Numbers
 let answers = [];
 let countervraag = 1;
 let counter = 0;
-// houdt de counter correct
+
 (function() {
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
 })();
 
-//BUTTONS! all function, skipp , back ,and more
+//BUTTONS! all function, skipp , back ,and more, (Button Events.)
 btnEens.addEventListener("click", () => {
   if (counter <= 30) {
     updateQuestion("pro");
@@ -58,7 +60,7 @@ btnBack.addEventListener("click", () => {
   }
 });
 
-//Filter buttons voor welke partie je wilt , groot,all,seculier
+//Filter buttons for the parties to choose , all,sec or groot
 allesBtn.addEventListener("click", () => {
   resultContent("all");
 });
