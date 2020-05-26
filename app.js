@@ -56,13 +56,14 @@ btnSkip.addEventListener("click", () => {
 });
 btnBack.addEventListener("click", () => {
   if (counter > 0) {
-    answers.pop();
+    console.log(answers)
+    // checkAnswer(answers[counter].opinion);
     counter--;
     countervraag--;
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
-    console.log(answers);
     chkBox.checked = false;
+    answers.pop();
   }
 });
 
@@ -76,17 +77,18 @@ sclrBtn.addEventListener("click", () => {
 grootBtn.addEventListener("click", () => {
   resultContent("groot");
 });
+
 //updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
   if (chkBox.checked) answers.push({ opinion: answer, checked: true });
   else answers.push({ opinion: answer, checked: false });
+       console.log(answers)
+       checkAnswer(answer);
 
   if (counter == subjects.length - 1) {
     displayResult();
     return;
   }
-
-  console.log(answers);
 
   counter++;
   countervraag++;
@@ -145,6 +147,11 @@ function resultContent(keuzen) {
   }
 }
 
+function checkAnswer(answer){
+  console.log(answer);
+
+}
+
 //calcutates the answer of all the answers and gives u the best, hier staan ook deze telt sterker mee punten worden hier ook berekent
 function calcAnswer() {
   for (let i = 0; i < answers.length; i++) {
@@ -165,3 +172,4 @@ function calcAnswer() {
     }
   }
 }
+// parties[part].score += 2;
