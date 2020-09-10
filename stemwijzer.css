@@ -167,12 +167,6 @@ body {
   margin-left: 100px;
 }
 
-.btn1:hover,
-.btn2:hover,
-.btn3:hover,
-.btn:hover {
-  background-color: rgb(1, 180, 220);
-}
 #partyKeuzen {
   display: none;
 }

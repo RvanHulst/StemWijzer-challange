@@ -63,6 +63,7 @@ btnBack.addEventListener("click", () => {
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
     chkBox.checked = false;
+    colorUpdate(answers[answers.length-1].opinion,answers[answers.length-1].checked);
     answers.pop();
   }
 });
@@ -94,6 +95,30 @@ function updateQuestion(answer) {
   countervraag++;
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
+
+  btnEens.style.background = "black";
+  btnGeenVanBeide.style.background = "black";
+  btnOnEens.style.background = "black";
+}
+function colorUpdate(opinion,inportant){
+  btnEens.style.background = "black";
+  btnGeenVanBeide.style.background = "black";
+  btnOnEens.style.background = "black";
+
+  if (opinion == "pro"){
+    btnEens.style.background = "#01b4dc";
+  }
+  else if (opinion == "none"){
+    btnGeenVanBeide.style.background = "#01b4dc";
+  }
+  else if (opinion == "contra"){
+    btnOnEens.style.background = "#01b4dc";
+  }
+  
+  if (inportant == true){
+    chkBox.checked = true;
+  }
+ 
 }
 //Bij result answer haalt hij hier dingen weg of laat ze just zien
 function displayResult() {
