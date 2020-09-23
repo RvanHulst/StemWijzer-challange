@@ -63,8 +63,7 @@ btnBack.addEventListener("click", () => {
     titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
     questionDOM.innerHTML = subjects[counter].statement;
     chkBox.checked = false;
-    colorUpdate(answers[answers.length-1].opinion,answers[answers.length-1].checked);
-    answers.pop();
+    colorUpdate(answers[counter].opinion,answers[counter].checked);
   }
 });
 
@@ -81,8 +80,8 @@ grootBtn.addEventListener("click", () => {
 
 //updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
-  if (chkBox.checked) answers.push({ opinion: answer, checked: true });
-  else answers.push({ opinion: answer, checked: false });
+  if (chkBox.checked) answers.splice(counter, 1, { opinion: answer, checked: true });
+  else answers.splice(counter, 1, {  opinion: answer, checked: false });
        console.log(answers)
        checkAnswer(answer);
 
@@ -95,10 +94,13 @@ function updateQuestion(answer) {
   countervraag++;
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
   questionDOM.innerHTML = subjects[counter].statement;
-
-  btnEens.style.background = "black";
-  btnGeenVanBeide.style.background = "black";
-  btnOnEens.style.background = "black";
+ 
+  if (answers[counter]){
+    colorUpdate(answers[counter].opinion,answers[counter].checked);
+  }
+  else {
+    colorUpdate();
+  }
 }
 function colorUpdate(opinion,inportant){
   btnEens.style.background = "black";
