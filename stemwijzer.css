@@ -176,3 +176,7 @@ body {
 #partyKeuzen {
   display: none;
 }
+
+.selected{
+  background-color: rgb(1, 180, 220);
+}

@@ -1,0 +1,27 @@
+Persoonlijke evaluatie Regels
+-----------------------------
+1) Bevat minimaal 100 woorden
+2) Is geschreven in correct nederlands zonder spelfouten met goede zinsopbouw.
+3) Je beschrijft wat je goed vond gaan tijdens het maken van de opdracht en wat er minder goed ging.
+4) Je hebt feedback verwerkt in je evaluatie van een mede-student:
+5) Vond hij/zij dat je uitwerking aan alle beoordelingscriteria heeft voldaan?
+6) Wat vond hij/zij goed aan de uitwerking van je opdracht?
+7) Wat vond hij/zij waar je nog in kan verbeteren?
+8) Dus inleveren als antwoord in ItsLearning. Niet in Github, niet in docx, niet in pdf, niet in txt-bestand
+-----------------------------
+
+Mij mening over hoe ik zelf bezig ben geweest met me front end opdracht, 
+Ik had meer er aan kunnen werken en minder onderzoek had kunnen doen naar onodige dingen die ik uiteindelijk toch niet heb gebruikt.
+Daarna heb ik voor me gevoel best veel over JS kunnen leren en kwam er achter dat me kennis minder groot was dan ik gehoopt was daardoor ben ik
+begonnen met een online course van The Complete JavaScript Course 2020: Build Real Projects! op udemy en die begint met de basics en gaat daarna 
+door met was geavanceerdere spullen.
+
+Ik vindt zelf dat ik veel kon/moest veranderen aan de code en aan mezelf.
+
+ik moest veel aan mezelf veranderen aan het begin van het jaar om mezelf de motivatie te geven en om te zorgen dat ik het afmaakte inplaats van 
+aan een ander project te beginnen. ik heb een grootte fout van vorige x nakijken eindelijk kunnen oplossen en viel uiteindelijk wel mee nadat
+ik wat onderzoek had gedaan, youtube/google/w3schools waarna ik het eerst precies wouw testen voordat ik het in zou gooien en dan niet precies
+weten met wat ik er zou me moeten doen.
+
+verder ben ik best tevreden over hoe de opdracht werkt. 
+maar ik weet zelf dat ik met me volgende project sneller er achter aan moet gaan en minder achterover geleuned te werk moet gaan.

@@ -55,6 +55,7 @@ btnSkip.addEventListener("click", () => {
   }
 });
 btnBack.addEventListener("click", () => {
+  console.log(colorReset());
   if (counter > 0) {
     console.log(answers)
     // checkAnswer(answers[counter].opinion);
@@ -80,10 +81,12 @@ grootBtn.addEventListener("click", () => {
 
 //updates qeustion en checked als het ingevuld is en houd counter bij
 function updateQuestion(answer) {
+  console.log(colorReset());
   if (chkBox.checked) answers.splice(counter, 1, { opinion: answer, checked: true });
   else answers.splice(counter, 1, {  opinion: answer, checked: false });
        console.log(answers)
        checkAnswer(answer);
+      
 
   if (counter == subjects.length - 1) {
     displayResult();
@@ -98,29 +101,30 @@ function updateQuestion(answer) {
   if (answers[counter]){
     colorUpdate(answers[counter].opinion,answers[counter].checked);
   }
-  else {
-    colorUpdate();
-  }
 }
 function colorUpdate(opinion,inportant){
-  btnEens.style.background = "black";
-  btnGeenVanBeide.style.background = "black";
-  btnOnEens.style.background = "black";
-
   if (opinion == "pro"){
-    btnEens.style.background = "#01b4dc";
+    btnEens.classList.toggle("selected");
   }
-  else if (opinion == "none"){
-    btnGeenVanBeide.style.background = "#01b4dc";
+  if (opinion == "none"){
+    btnGeenVanBeide.classList.toggle("selected");
   }
-  else if (opinion == "contra"){
-    btnOnEens.style.background = "#01b4dc";
+  if (opinion == "contra"){
+    btnOnEens.classList.toggle("selected");
   }
   
   if (inportant == true){
     chkBox.checked = true;
   }
- 
+
+}
+function colorReset(){
+  //remove the selected from the class list
+  btnEens.classList.remove("selected");
+
+  btnGeenVanBeide.classList.remove("selected")
+
+  btnOnEens.classList.remove("selected")
 }
 //Bij result answer haalt hij hier dingen weg of laat ze just zien
 function displayResult() {
