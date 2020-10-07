@@ -87,12 +87,10 @@ function updateQuestion(answer) {
        console.log(answers)
        checkAnswer(answer);
       
-
   if (counter == subjects.length - 1) {
     displayResult();
     return;
   }
-
   counter++;
   countervraag++;
   titleDOM.innerHTML = countervraag + ". " + subjects[counter].title;
@@ -104,19 +102,17 @@ function updateQuestion(answer) {
 }
 function colorUpdate(opinion,inportant){
   if (opinion == "pro"){
-    btnEens.classList.toggle("selected");
+    btnEens.classList.add("selected");
   }
   if (opinion == "none"){
-    btnGeenVanBeide.classList.toggle("selected");
+    btnGeenVanBeide.classList.add("selected");
   }
   if (opinion == "contra"){
-    btnOnEens.classList.toggle("selected");
+    btnOnEens.classList.add("selected");
   }
-  
   if (inportant == true){
     chkBox.checked = true;
   }
-
 }
 function colorReset(){
   //remove the selected from the class list
@@ -177,12 +173,9 @@ function resultContent(keuzen) {
     }
   }
 }
-
 function checkAnswer(answer){
   console.log(answer);
-
 }
-
 //calcutates the answer of all the answers and gives u the best, hier staan ook deze telt sterker mee punten worden hier ook berekent
 function calcAnswer() {
   for (let i = 0; i < answers.length; i++) {
